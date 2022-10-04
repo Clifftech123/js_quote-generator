@@ -39,7 +39,7 @@ function newQuote() {
     authorText.textContent = quote.author;
   }
   // CHECK IF QUOTE IS LONGER THAN 120 CHARACTERS AND ADD A CLASS TO IT
-  if (quote.text.length > 120) {
+  if (quote.text.length > 100) {
     quoteText.classList.add("long-quote");
   }else{
     quoteText.classList.remove("long-quote");
@@ -57,14 +57,13 @@ function newQuote() {
 async function will not stop the browser the load whenever will refresh the apge 
 */
 async function getQuote() {
-  loading();
-  const apiUrl = "https://type.fit/api/quotes";
-  const response = await fetch(apiUrl);
-  apiQuote = await response.json();
-  console.log(apiQuote[1]);
-  newQuote();
-
   try {
+ loading();
+ const apiUrl = "https://type.fit/api/quotes";
+ const response = await fetch(apiUrl);
+ apiQuote = await response.json();
+ newQuote();
+
   } catch (error) {
     // CATCH ERROR HERE
   };
